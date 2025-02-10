@@ -333,10 +333,7 @@
         <h2>AutoHar</h2>
         <div class="container">
             <div class="box">
-                <a href="https://bloxtools.ca/generator/Celestialharv2" class="button">AUTOHAR 1</a>
-            </div>
-            <div class="box">
-                <a href="#" class="button">AUTOHAR 2</a>
+                <a href="https://bloxtools.ca/generator/Celestialharv2" class="button">TEMPORARY AUTOHAR</a>
             </div>
         </div>
     </div>
@@ -391,27 +388,25 @@
             document.body.classList.toggle('dark-mode');
             const isDarkMode = document.body.classList.contains('dark-mode');
             if (isDarkMode) {
-                modeToggle.textContent = 'Dark'; // Change text to "Dark" in dark mode
-                modeToggle.classList.add('dark');
-                createComets('dark'); // Add comets in dark mode
+                modeToggle.textContent = 'Dark';
+                createComets('dark');
             } else {
-                modeToggle.textContent = 'Light'; // Change text to "Light" in light mode
-                modeToggle.classList.remove('dark');
-                createComets('light'); // Add comets in light mode
+                modeToggle.textContent = 'Light';
+                createComets('light');
             }
         });
 
-        // Initialize comets in light mode
-        createComets('light');
-
-        // Show Tutorials Section on Scroll
+        // Detect when the tutorials section is visible on scroll
         const tutorialsContainer = document.getElementById('tutorials-container');
         window.addEventListener('scroll', () => {
             const rect = tutorialsContainer.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.8) {
+            if (rect.top < window.innerHeight) {
                 tutorialsContainer.classList.add('show');
             }
         });
+
+        // Initialize with light mode
+        createComets('light');
     </script>
 </body>
 </html>
