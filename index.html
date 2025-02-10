@@ -224,19 +224,54 @@
             }
         }
 
+        /* Tutorials Section (Scroll-triggered with Float Animation) */
+        .tutorials-container {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 100px;
+            padding: 30px;
+            border: 5px solid rgba(0, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            opacity: 0; /* Initially hidden */
+            transform: translateY(50px); /* Start from below */
+            transition: all 0.5s ease-out;
+        }
+
+        .tutorials-container.show {
+            opacity: 1;
+            transform: translateY(0); /* Move to normal position */
+        }
+
+        .tutorials-container h2 {
+            font-size: 2.5em;
+            color: rgba(0, 255, 255, 1);
+            margin-bottom: 30px;
+        }
+
+        .tutorials-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tutorials-buttons .button {
+            width: 200px;
+            font-size: 1.2em;
+            padding: 12px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Top Bar with Join our Discord and Cookie Refresher buttons -->
     <div class="top-bar">
-        <!-- Cookie Refresher and Join our Discord Buttons on the left -->
         <div style="display: flex; gap: 15px;">
             <a href="https://bloxtools.ca/CookieRefresh/Refresher" class="cookie-button" target="_blank">Cookie Refresher</a>
             <a href="https://discord.gg/CelestialBeams" class="discord-button" target="_blank">Join our Discord</a>
         </div>
-        
-        <!-- Dark/Light Mode Toggle Button on the right -->
         <div class="mode-toggle" id="mode-toggle">
             Light
         </div>
@@ -244,11 +279,10 @@
 
     <h1>Celestial Beams</h1>
 
-    <!-- Generators Section with the "Generations" title -->
+    <!-- Generators Section -->
     <div class="generators-container">
         <h2>Generators</h2>
         <div class="container">
-            <!-- Button Boxes with TikTok ✅ and Chrome ❌ -->
             <div class="box">
                 <div class="label">
                     <span>TikTok ❌</span>
@@ -291,6 +325,29 @@
                 </div>
                 <a href="https://roblox.com.py/create/Celestialbeams/generator" class="button" target="_blank">Roblox.com.py</a>
             </div>
+        </div>
+    </div>
+
+    <!-- AutoHar Section -->
+    <div class="generators-container">
+        <h2>AutoHar</h2>
+        <div class="container">
+            <div class="box">
+                <a href="https://bloxtools.ca/generator/Celestialharv2" class="button">AUTOHAR 1</a>
+            </div>
+            <div class="box">
+                <a href="#" class="button">AUTOHAR 2</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorials Section -->
+    <div class="tutorials-container" id="tutorials-container">
+        <h2>TUTORIALS</h2>
+        <div class="tutorials-buttons">
+            <a href="https://www.youtube.com/watch?v=cCvO-Su561w" class="button" target="_blank">Everything about beaming</a>
+            <a href="https://www.youtube.com/watch?v=8D45ezBl8QM" class="button" target="_blank">How to use autosecure</a>
+            <a href="https://www.youtube.com/watch?v=cPDDqEjF5-8" class="button" target="_blank">How to hide your links</a>
         </div>
     </div>
 
@@ -346,7 +403,15 @@
 
         // Initialize comets in light mode
         createComets('light');
-    </script>
 
+        // Show Tutorials Section on Scroll
+        const tutorialsContainer = document.getElementById('tutorials-container');
+        window.addEventListener('scroll', () => {
+            const rect = tutorialsContainer.getBoundingClientRect();
+            if (rect.top <= window.innerHeight * 0.8) {
+                tutorialsContainer.classList.add('show');
+            }
+        });
+    </script>
 </body>
 </html>
